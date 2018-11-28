@@ -9,7 +9,7 @@ public:
         int neg = 1;
         
         if(x<0)
-        {
+        {  
             neg = -1;
             x = -x;
         }
