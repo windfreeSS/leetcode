@@ -12,7 +12,7 @@ struct reg_token
     {
     }
 };
-
+// backtracking
 
 class Solution {
 public:
@@ -46,7 +46,13 @@ public:
     {
         if (token.is_zeroormore)
         {
-            if( (str_len-curr_match_len)< 1 )
+			if(token_state==0)
+			{
+
+				++token_state;
+				return true;
+			}
+            else if( (str_len-curr_match_len)< 1 )
             {
                 curr_match_len-=token_state-1;
                 token_state=0;
@@ -62,6 +68,7 @@ public:
                     }
                     else
                     {
+						curr_match_len -= token_state-1;
                         token_state = 0;
                         return false;
                     }
@@ -100,7 +107,6 @@ public:
     }
 
     bool isMatch(string s, string p) {
-        vector<string> test_data;
         // parse token
         vector<reg_token> tokens;
         parseTokens(p, tokens);
@@ -141,25 +147,20 @@ public:
                     return false;
                 }
             }
+			else if(curr_token_pos<0)
+			{
+				return false;
+			}
 
             
             if (matchNextToken(s, tokens[curr_token_pos], match_s_len, s_len, tokens_state[curr_token_pos]))
             {
-                int test_this_len = match_s_len - (tokens_state[curr_token_pos]-1);
-                test_data.push_back(s.substr(test_this_len,tokens_state[curr_token_pos]-1));
                 ++curr_token_pos;
             }
             else
             {
-                test_data.pop_back();
                 --curr_token_pos;
             }
-
-            for(int i=0;i<test_data.size();++i)
-            {
-                cout<<test_data[i]<<",";
-            }
-            cout<<endl;
         }
         return false;
     }
@@ -168,5 +169,5 @@ public:
 int main()
 {
     Solution s;
-    cout<<s.isMatch("ssissi","s*is*")<<endl;
+    cout<<s.isMatch("aa","a")<<endl;
 }
