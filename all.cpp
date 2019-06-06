@@ -18,6 +18,13 @@ struct ListNode {
     ListNode(int x) : val(x), next(NULL) {}
 };
 
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+
 ListNode* gen_list(vector<int> data)
 {
     ListNode* root_node = new ListNode(data[0]);
