@@ -11,6 +11,19 @@ int main()
     test_aligned_malloc();
 }
 
+void test_pointer_ref()
+{
+    int val = 12;
+    int &n = val;
+    printf("%p,%p\n",&val,&n);
+
+    char *ptr = new char[10];
+    char *ptr1 = ptr;
+    char *&ptr2=ptr;
+    printf("%p,%p,%p\n",ptr,ptr1,ptr2);
+    printf("%p,%p,%p\n",&ptr,&ptr1,&ptr2);
+}
+
 void test_std_malloc()
 {
     printf("Test Stand Malloc/Free\n");
