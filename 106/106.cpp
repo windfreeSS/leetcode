@@ -9,6 +9,27 @@ public:
         {
             return NULL;
         }
+        int root_pos=-1;
+        for(int i = in_begin;i<in_end;++i)
+        {
+            if(inorder[i]!=postorder[post_pos])
+            {
+                continue;
+            }
+            root_pos = i;
+            break;
+        }
+        if(root_pos==-1)
+        {
+            return NULL;
+        }
+        TreeNode* sub_node = new TreeNode(inorder[root_pos]);
+        --post_pos;
+        sub_node->right = buildSubStree(in_begin,root_pos,inorder,post_pos,postorder);
+        sub_node->left  =  buildSubStree(root_pos+1,in_end,inorder,post_pos,postorder);
+
+        return sub_node;
+
     }
     TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
         int in_begin = 0;
@@ -18,3 +39,7 @@ public:
         return buildSubStree(in_begin, in_end, inorder, post_pos, postorder);
     }
 };
+int main()
+{
+    
+}
