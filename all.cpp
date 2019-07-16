@@ -3,6 +3,7 @@
 #include <list>
 #include <string>
 #include <algorithm>
+#include <string.h>
 using namespace std;
 
 void print(vector<int>& data)
