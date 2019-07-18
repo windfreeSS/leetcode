@@ -25,8 +25,8 @@ public:
         }
         TreeNode* sub_node = new TreeNode(inorder[root_pos]);
         --post_pos;
-        sub_node->right = buildSubStree(in_begin,root_pos,inorder,post_pos,postorder);
-        sub_node->left  =  buildSubStree(root_pos+1,in_end,inorder,post_pos,postorder);
+        sub_node->right = buildSubStree(root_pos+1,in_end,inorder,post_pos,postorder);
+        sub_node->left  =  buildSubStree(in_begin,root_pos,inorder,post_pos,postorder);
 
         return sub_node;
 
