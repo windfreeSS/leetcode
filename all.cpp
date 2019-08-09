@@ -48,3 +48,8 @@ void print(ListNode* root)
     }
     printf("null\n");
 }
+
+void void_var()
+{
+    return;
+}
