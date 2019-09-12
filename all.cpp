@@ -3,10 +3,12 @@
 #include <list>
 #include <string>
 #include <algorithm>
+#include <map>
 #include <string.h>
 using namespace std;
 
-void print(vector<int>& data)
+template <typename T>
+void print(vector<T>& data)
 {
     for(int i=0;i<data.size();++i)
     {
