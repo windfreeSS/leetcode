@@ -42,6 +42,7 @@ public:
                 {
                     continue;
                 }
+                cp[r][c] = 0;
                 int sum = 0;
                 dfs(cp, r, c, sum);
                 if (sum > max_area)
